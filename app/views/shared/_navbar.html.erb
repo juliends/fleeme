@@ -1,7 +1,10 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
+    <div id="logo">
+      <img src="<%= image_path('logo-red.png') %>"/>
+      <p>Fleeme</p>
+    </div>
   <% end %>
 
   <!-- Right Navigation -->

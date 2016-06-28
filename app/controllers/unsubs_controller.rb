@@ -6,8 +6,9 @@ class UnsubsController < ApplicationController
     @user = User.new
 
     initialize_hash
-    @fields = generate_fields(@hash_service)
     #loading the form_specs from json file
+    # @fields = generate_fields(@hash_service)
+    # Old loading for json specs
   end
 
   private
@@ -17,11 +18,13 @@ class UnsubsController < ApplicationController
     @hash_service = JSON.parse(file, symbolize_names: :true)[:fields]
   end
 
-  def generate_fields(hash)
-    hash.each do |field|
-      @fieldname = field[:name]
-    end
-  end
+  # def generate_fields(hash)
+  #   hash.each do |field|
+  #     @fieldname = field[:name]
+  #   end
+  # end
+  #
+  # Old method for hash load
 
   def unsub_params
     params.require(:unsub).permit(:form_complete, :photo)

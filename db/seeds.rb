@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Service.destroy_all
+services_attributes = [
+  {
+    name: "Carte UGC illimité",
+    company: "UGC Ciné Cité",
+    street_address: "Service Abonnés",
+    zip_code: 92206,
+    city: "Neuilly sur Seine Cedex",
+    postal_box: "TSA 30 200",
+  }
+]
+services_attributes.each { |params| Service.create!(params) }

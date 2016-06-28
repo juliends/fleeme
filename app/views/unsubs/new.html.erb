@@ -4,7 +4,7 @@
 
       <fieldset class="custom-form initial-pos">
         <% if  question[:type] == "radio" %>
-          <%= label_tag(question[:label], question[:label]) %>
+          <%= label_tag(question[:label]) %>
           <% question[:choices].each do |choices| %>
             <div class="radio-field <%=  choices[:type] == "radio" && choices[:choices] ? "has_sublevel" : "no_sublevel" %>">
               <%= radio_button_tag("unsub[form_complete[#{choices[:name]}]]", choices[:value]) %>
@@ -15,7 +15,7 @@
         <% else %>
           <%= label_tag(question[:label]) %>
           <%= content_tag(:input, nil, type: question[:type], name: "unsub[form_complete[#{question[:name]}]]", class: "input-text ") %>
-          <div class="btn-blue-neg next-button" >Suivant</div>
+          <div class="next-button" >Suivant</div>
         <% end %>
       </fieldset>
 
@@ -37,5 +37,6 @@
         <% end %>
       <% end %>
     <% end %>
+    <%= submit_tag "Valider ces informations", class: "btn btn-primary" %>
   <% end %>
 </div>

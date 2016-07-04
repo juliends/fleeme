@@ -10,6 +10,9 @@ class UnsubsController < ApplicationController
     # @fields = generate_fields(@hash_service)
     # Old loading for json specs
   end
+  def create
+
+  end
 
   private
 

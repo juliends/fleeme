@@ -5,18 +5,22 @@ class UnsubsController < ApplicationController
     @unsub = Unsub.new
     @user = User.new
 
-    initialize_hash
+    # initialize_hash
     #loading the form_specs from json file
     # @fields = generate_fields(@hash_service)
     # Old loading for json specs
   end
 
+  def create
+
+  end
+
   private
 
-  def initialize_hash
-    file = File.read('app/assets/form_specs/ugc.json')
-    @hash_service = JSON.parse(file, symbolize_names: :true)[:fields]
-  end
+  # def initialize_hash
+  #   file = File.read('app/assets/form_specs/ugc.json')
+  #   @hash_service = JSON.parse(file, symbolize_names: :true)[:fields]
+  # end
 
   # def generate_fields(hash)
   #   hash.each do |field|

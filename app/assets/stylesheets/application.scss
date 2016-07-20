@@ -1,10 +1,13 @@
+
+
 // Graphical variables
 @import "config/variables";
-@import "config/bootstrap_variables";
+
 
 // External libraries
-@import "bootstrap-sprockets";
-@import "bootstrap";
+
+@import "foundation_and_overrides";
+/* Add imports of custom sass/scss files here */
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
@@ -13,3 +16,4 @@
 @import "components/index";
 @import "pages/index";
 @import "vendor/index";
+

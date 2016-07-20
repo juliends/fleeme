@@ -1,25 +1,15 @@
-/* -------------------------------------
- * Utilities classes
- * These are examples of utilities classes
- * Feel free to change them and create your own
- * ------------------------------------- */
-
-// Paddings
-.padded {
-  padding-top: 5em;
-  padding-bottom: 5em;
+.bg-primary {
+  background-color: $brand-color;
 }
 
-// Backgrounds
-.bg-black {
-  background: #4a4a4a;
+.tx-primary {
+  color: $brand-color
 }
-.bg-grey {
-  background: #aeaeae;
+
+.tx-center {
+  text-align: center;
 }
-.bg-blue {
-  background: #00a3e1;
-}
-.bg-dark-blue {
-  background: #3b5998;
+
+.vertical-padding-2 {
+  padding: 2em 0em;
 }

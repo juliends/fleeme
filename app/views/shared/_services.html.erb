@@ -1,0 +1,58 @@
+<div class="expanded row vertical-padding-2" data-equalizer>
+  <div class="small-12 medium-10 large-10 small-centered  medium-centered">
+    <div class="row vertical-padding ">
+      <h2 class="tx-primary text-center">Services disponibles</h2>
+      <div class="small-12 medium-4 large-3 columns">
+          <%= link_to "/services/1/unsubs/new", method: :get do %>
+            <div class="card card-service" data-equalizer-watch>
+              <div class="card-image">
+                <%= image_tag('images/50.png', alt: 'Description', 'data-interchange' => "[#{image_path('50.png')}, small], [#{image_path('150.png')}, medium],") %>
+              </div>
+              <p class=""><%= @services[0].name %></p>
+              <button type="button" class="button success large show-for-medium">Résilier</button>
+              <button type="button" class="button success  show-for-small hide-for-medium">Résilier</button>
+            </div>
+          <% end %>
+      </div>
+      <div class="small-12 medium-4 large-3 columns">
+          <%= link_to "/services/1/unsubs/new", class: "link-service", method: :get do %>
+            <div class="card card-service" data-equalizer-watch>
+              <div class="card-image">
+                <%= image_tag('50.png', alt: 'Description', 'data-interchange' => "[#{image_path('50.png')}, small], [#{image_path('150.png')}, medium],") %>
+              </div>
+
+              <p class="">Adhésion Club France Loisirs</p>
+              <button type="button" class="button success large show-for-medium">Résilier</button>
+              <button type="button" class="button success  show-for-small hide-for-medium">Résilier</button>
+            </div>
+          <% end %>
+      </div>
+      <div class="small-12 medium-4 large-3 columns">
+          <%= link_to "/services/1/unsubs/new", method: :get do %>
+            <div class="card card-service " data-equalizer-watch>
+              <div class="card-image">
+                <%= image_tag('50.png', alt: 'Description', 'data-interchange' => "[#{image_path('50.png')}, small], [#{image_path('150.png')}, medium],") %>
+              </div>
+              <p class="">Abonnement Canl+ / Canalsat</p>
+              <button type="button" class="button success large show-for-medium">Résilier</button>
+              <button type="button" class="button success  show-for-small hide-for-medium">Résilier</button>
+            </div>
+          <% end %>
+      </div>
+      <div class="small-12 medium-4 large-3 columns end">
+          <%= link_to "/services/1/unsubs/new", method: :get do %>
+            <div class="card card-service " data-equalizer-watch>
+              <div class="card-image">
+                <%= image_tag('50.png', alt: 'Description', 'data-interchange' => "[#{image_path('50.png')}, small], [#{image_path('150.png')}, medium],") %>
+              </div>
+              <p class="">Abonnement Navigo</p>
+              <button type="button" class="button success large show-for-medium">Résilier</button>
+              <button type="button" class="button success  show-for-small hide-for-medium">Résilier</button>
+            </div>
+          <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+

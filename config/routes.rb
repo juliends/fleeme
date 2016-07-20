@@ -2,9 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'services#index'
 
+  get 'admin' => 'pages#admin'
+
   resources :services do
+
     resources :unsubs, only: [ :new, :create, :show]
   end
+
+  resource :services, only: [ :index, :show, :create]
 
   resource :typeform_webhooks, only: :create, defaults: { formats: :json }
 

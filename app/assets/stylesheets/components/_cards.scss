@@ -1,5 +1,15 @@
 .card {
-  height: 175px;
-  color: white;
-  position: relative;
+  @include breakpoint(medium) {
+    text-align: center;
+    flex: 1;
+    display: flex;                 /* create nested flex container */
+    flex-wrap: wrap;
+    justify-content: center;
+    .card-image {
+      width: 100%;
+    }
+    h3, h4, p {
+      width: 100%
+    }
+  }
 }

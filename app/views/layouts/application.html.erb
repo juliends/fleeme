@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>TODO</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Fleeme Dev" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
+
   <body>
-    <%= render 'shared/navbar' %>
+    <%= render 'shared/topbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%= javascript_include_tag 'application' %>
+    <%= render 'shared/footer' %>
   </body>
+  <!-- this will include every plugin and utility required by Foundation -->
+  <script src="https://cdn.jsdelivr.net/foundation/6.2.3/foundation.min.js"></script>
 </html>
+

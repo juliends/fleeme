@@ -1,0 +1,25 @@
+<div class="expanded row">
+  <div class="small-12 medium-10 medium-centered">
+    <div class="row vertical-padding-2">
+
+       <div class="small-12 medium-6 large-4 columns">
+        <h3>Service <%= @service.name %></h3>
+        <div class="secondary callout">
+          <p><%= @service.name %></p>
+          <p><%= @service.company %></p>
+          <p><%= @service.street_address %></p>
+          <p><%= @service.zip_code %></p>
+          <p><%= @service.city %></p>
+          <p><%= @service.postal_box %></p>
+          <p><%= @service.form_specs %></p>
+          <p>
+          <% @service.photos.each do |photo| %>  <%= cl_image_tag(photo.path, :alt => "Sample Image") %><% end %></p>
+          <button type="button" class="button primary large show-for-medium">Preview form</button>
+          <button type="button" class="button primary small show-for-small-only">Preview form</button>
+          <button type="button" type="submit" class="button success large show-for-medium">Edit service</button>
+          <button type="button" type="submit" class="button success small show-for-small-only">Edit service</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

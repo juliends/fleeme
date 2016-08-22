@@ -1,0 +1,19 @@
+.card-market {
+  border: solid 0px;
+
+  h4 {
+    height: 2em;
+    color: $secondary
+  }
+  @media(max-width:767px){
+    p {
+      padding-bottom: 25px;
+      border-bottom: solid 2px grey;
+    }
+  }
+}
+
+@media(max-width:767px){}
+@media(min-width:768px){}
+@media(min-width:992px){}
+@media(min-width:1200px){}

@@ -17,9 +17,61 @@
 .bg-grey {
   background: #aeaeae;
 }
+
+.bg-grey-light {
+  background: #f5f5f5;
+}
+
 .bg-blue {
   background: #00a3e1;
 }
+
 .bg-dark-blue {
   background: #3b5998;
+}
+
+.bg-white {
+  background: #FFF;
+}
+
+.bg-primary-light {
+  background: #0972ca;
+}
+
+//
+
+.bg-primary {
+  background: $primary;
+}
+
+.bg-secondary {
+  background: $secondary;
+}
+
+.tx-grey {
+  color: #aeaeae;
+}
+
+.tx-white {
+  color: #FFF;
+}
+
+.tx-primary {
+  color: $primary;
+}
+
+.tx-secondary {
+  color: $secondary;
+}
+
+.vertical-padding-2 {
+  padding: 2rem 0rem;
+}
+
+.vertical-padding-4 {
+  padding: 4rem 0rem;
+}
+
+.vertical-padding-8 {
+  padding: 8rem 0rem;
 }

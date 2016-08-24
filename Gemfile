@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.3.0'
 
 gem 'rails', '4.2.6'
 gem 'puma'
@@ -23,8 +23,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
-
-
+  
+  
 end
 
 group :production do

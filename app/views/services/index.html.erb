@@ -1,3 +1,12 @@
-<%= render 'shared/banner' %>
-<%= render 'shared/services' %>
-<%= render 'shared/rowmarket' %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <div class="card-description">
+          <h2>UGC</h2>
+          <%= button_to "Résilier", "/services/1/unsubs/new", class: "btn btn-primary", method: :get %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

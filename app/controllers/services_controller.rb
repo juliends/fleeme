@@ -5,9 +5,4 @@ class ServicesController < ApplicationController
   def index
     @services = Service.all
   end
-
-  def create
-    @service = Service.create
-  end
-
 end

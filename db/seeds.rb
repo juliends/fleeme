@@ -18,3 +18,4 @@ services_attributes = [
   }
 ]
 services_attributes.each { |params| Service.create!(params) }
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

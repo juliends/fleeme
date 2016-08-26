@@ -17,6 +17,10 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'active_skin'
+
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'

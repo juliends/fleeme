@@ -20,3 +20,21 @@ $skinLogo: url("admin_logo.png") no-repeat 0 0;
 //
 //   .status_tag { background: #6090DB; }
 
+.attachinary_container{
+  margin-left: 20%;
+  margin-top: 20px;
+}
+
+.attachinary_container ul li{
+  position:relative;
+  display: inline-block;
+}
+
+.attachinary_container ul li a{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: rgba(0,0,0,.85);
+}

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :unsubs, only: [ :new, :create, :show]
   end
 
+  mount Attachinary::Engine => "/attachinary"
+
   resource :typeform_webhooks, only: :create, defaults: { formats: :json }
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -30,7 +30,7 @@
                     <div class="caption">
                       <h5><%= service.name %></h5>
                     </div>
-                      <button class="btn btn-success">Résilier</button>
+                      <%= button_to "Résilier", "/services/3/unsubs/new", class: "btn btn-success", method: :get %>
                   </a>
                 </div>
         <% end %>

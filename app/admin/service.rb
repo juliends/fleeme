@@ -12,6 +12,7 @@ ActiveAdmin.register Service do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  scope :all, :default => true
 
   permit_params :name, :company, :street_address, :zip_code, :city, :postal_box, :form_specs, photos: []
 

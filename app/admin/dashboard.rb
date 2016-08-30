@@ -10,6 +10,18 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
+  section 'New unsubs' do
+    table_for Unsub do
+      column :id
+      column :service_id
+      column 'Customer email'
+      column 'Complete'
+      column 'Payed'
+      column 'Sent'
+      column 'Confirmed'
+    end
+  end
+
     # Here is an example of a simple dashboard with columns and panels.
     #
     # columns do

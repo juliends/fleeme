@@ -17,6 +17,11 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+gem "cloudinary", "1.1.0"
+gem "attachinary"
+gem "jquery-fileupload-rails"
+gem "coffee-rails"
+
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'active_skin'
 

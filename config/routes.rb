@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   mount Attachinary::Engine => "/attachinary"
 
-  resource :typeform_webhooks, only: :create, defaults: { formats: :json }
+  # resource :typeform_webhooks, only: :create, defaults: { formats: :json }
+
+  match '/webhook' => 'typeform_webhooks#receive', via: :post, defaults: { formats: :json }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

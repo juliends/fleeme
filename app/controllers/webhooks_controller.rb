@@ -13,15 +13,35 @@ class WebhooksController < ApplicationController
     end
 
     if @data["form_response"]["form_id"] == "QyqJ49"
-      ugc
-    else
-      p false
+      p ugc
+    else 
+      # On pourra ici ajouter les id d' autres forms Typeform
+      false
     end
-    
+
     render nothing: true
   end
 
   def ugc
+    @answers = answers_to_hash(@data["form_response"]["answers"]) 
+    @user = User.new
+    @user.firstname = @answers["25108292"]
+    @user.lastname = @answers["25108413"]
+    @user.email = @answers["25423473"]
+    @user.address = @answers["25423131"]
+    @user.zipcode = @answers["25424220"]
+    @user.city = @answers["25424218"]
+    @user.save
+
+    # @service = Service.find(params[:service_id])
+
+    # @unsub = Unsub.new
+    # if @unsub.save
+    #   redirect_to unsub_path(@unsub)
+    # else
+    #   render 'service/show'
+    # end
+
     # p request.body.read
     # p data["event_id"]
     # p data["event_type"]
@@ -30,5 +50,17 @@ class WebhooksController < ApplicationController
     
   end
 
+  def answers_to_hash(array)
+    hash = {} 
+    array.each do |q|
+      types = ['text', 'email']
+      type = q['type']
+      if types.include?(type)
+        hash[q["field"]["id"]] = q[type]
+      elsif type == 'choice'
+        hash[q['field']['id']] = q["choice"]
+      end
+    end
+    return hash
+  end
 end
-

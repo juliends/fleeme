@@ -5,22 +5,7 @@ class UnsubsController < ApplicationController
     @session = session.id
   end
 
-  def create
-    @unsub = Unsub.new
-    if @unsub.save
-      redirect_to unsub_path(@unsub)
-    else
-      render 'service/show'
-    end
-  end
-
   def show
-    @unsub = unsub.find(params[:id])
-  end
-
-  private
-
-  def unsub_params
-    params.require(:unsub).permit(:form_complete, :photo)
+    
   end
 end

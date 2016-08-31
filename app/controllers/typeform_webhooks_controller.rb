@@ -1,6 +1,11 @@
 class TypeformWebhooksController < ApplicationController
+  protect_from_forgery
 
-  def create
-
+  def receive
+    render text: "Thanks for sending a POST request with cURL! Payload: #{request.body.read}"
   end
+
+
+
 end
+

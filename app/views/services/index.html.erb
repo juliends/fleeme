@@ -1,16 +1,4 @@
-    <%= render 'shared/banner' %>
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <div class="card">
-        <div class="card-description">
-          <h2>UGC</h2>
-          <% button_to "Résilier", "/services/1/unsubs/new", class: "btn btn-primary", method: :get %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
+<%= render 'shared/banner' %>
 
 <div class="container-fluid bg-grey-light" id="services">
   <div class="row">
@@ -22,17 +10,17 @@
       </div>
       <div class="row vertical-padding-4">
         <% @services.each do |service| %>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
-                  <a href="#" class="thumbnail card-service text-center">
-                    <div class="service-img">
-                      <img src="http://placehold.it/50x50" class="img-resposive img-circle" alt="...">
-                    </div>
-                    <div class="caption">
-                      <h5><%= service.name %></h5>
-                    </div>
-                      <button class="btn btn-success">Résilier</button>
-                  </a>
-                </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+            <a href="#" class="thumbnail card-service text-center">
+              <div class="service-img">
+                <img src="http://placehold.it/50x50" class="img-resposive img-circle" alt="...">
+              </div>
+              <div class="caption">
+                <h5><%= service.name %></h5>
+              </div>
+                <%= button_to "Résilier", "/services/4/unsubs/new", class: "btn btn-success", method: :get %>
+            </a>
+          </div>
         <% end %>
         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
           <a href="#addservice" class="thumbnail card-service text-center">

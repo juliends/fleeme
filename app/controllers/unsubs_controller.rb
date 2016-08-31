@@ -8,9 +8,6 @@ class UnsubsController < ApplicationController
 
   def create
     @unsub = Unsub.new
-    
-
-
     if @unsub.save
       redirect_to unsub_path(@unsub)
     else

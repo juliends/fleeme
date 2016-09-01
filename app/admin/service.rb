@@ -70,5 +70,4 @@ ActiveAdmin.register Service do
       end
     end
   end
-
 end

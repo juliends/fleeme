@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   match '/webhook' => 'webhooks#receive', via: :post, defaults: { formats: :json }
 
   resources :services do
-    resources :unsubs, only: [ :new, :create, :show]
+    resources :unsubs, only: [ :new, :show]
   end
+
+  get '/unsub' => 'unsubs#show'
+  
 end

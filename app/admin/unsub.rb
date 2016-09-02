@@ -15,17 +15,15 @@ ActiveAdmin.register Unsub do
 
 scope :all, :default => true
 
-index do
-  selectable_column
-  column :id
-  column :service_id
-  column 'Customer email'
-  column 'Complete'
-  column 'Payed'
-  column 'Sent'
-  column 'Confirmed'
+  index do
+    selectable_column
+    column :id
+    column :service_id
+    column 'Customer email'
+    column 'Complete'
+    column 'Payed'
+    column 'Sent'
+    column 'Confirmed'
 
-end
-
-
+  end
 end

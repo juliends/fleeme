@@ -2,38 +2,54 @@ class UnsubsController < ApplicationController
 
   def new
     @service = Service.find(params[:service_id])
-    @unsub = Unsub.new
-    @user = User.new
-  end
-
-  def create
-    @unsub = Unsub.new
-    result = open('http://requestb.in/1gf6ago1?inspect')
-    result.lines { |f| f.each_line {|line| p line} }
-
-    api_url = 'https://api.typeform.com/v1/form/QyqJ49?key=TYPEFORM_KEY'
-
-    open(api_url) do |stream|
-      quote = JSON.parse(stream.read)
-      puts quote['value']['joke']
-    end
-
-    raise
-
-    if @unsub.save
-      redirect_to unsub_path(@unsub)
-    else
-      render 'service/show'
-    end
+    @session = session.id
+    # @email = Devise.friendly_token.first(8)
+    # @user = User.create!(email: @email,  session_id: @session)
+    # sign_in(:user, @user)
   end
 
   def show
-    @unsub = unsub.find(params[:id])
+    # Permet de récupérer le User mais risque de latence si Typeform ne répond pas rapidement
+    # @session = session.id
+    # current_user = User.where(session_id: @session)
+    raise
   end
+
 
   private
 
-  def unsub_params
-    params.require(:unsub).permit(:form_complete, :photo)
+  # if @data["form_response"]["form_id"] == "QyqJ49"
+    #   ugc
+    # else 
+    #   ugc
+    # end
+
+
+  def ugc
+    @answers = answers_to_hash(@data["form_response"]["answers"]) 
+    @id = @data["form_response"]["hidden"]["id"].to_i
+    @user = User.where(id: @id)
+    @user.firstname = @answers["25108292"]
+    @user.lastname = @answers["25108413"]
+    @user.email = @answers["25423473"]
+    @user.address = @answers["25423131"]
+    @user.zipcode = @answers["25424220"]
+    @user.city = @answers["25424218"]
+    @service = @data["form_response"]["hidden"]["service"]
+    @unsub = Unsub.create!(user: @user, service_id: @service, form_complete: @data)
+  end
+
+  def answers_to_hash(array)
+    hash = {} 
+    array.each do |q|
+      types = ['text', 'email']
+      type = q['type']
+      if types.include?(type)
+        hash[q["field"]["id"]] = q[type]
+      elsif type == 'choice'
+        hash[q['field']['id']] = q["choice"]
+      end
+    end
+    return hash
   end
 end

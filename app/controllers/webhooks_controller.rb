@@ -12,16 +12,20 @@ class WebhooksController < ApplicationController
     @answers = @data["form_response"]["answers"]
     @session = @data["form_response"]["hidden"]["session"]
     @infos = get_user_infos(@answers)
-    User.create!(firstname: @infos["28860463"], lastname: @infos["28860464"], email: @infos["28860465"], session_id: @session)
+    @user = User.create!(firstname: @infos["28860463"], lastname: @infos["28860464"], email: @infos["28860465"], session_id: @session)
     render nothing: true
   end
 
   def ugc
-    # if @data["form_response"]["form_id"] == "QyqJ49"
-    #   ugc
-    # else 
-    #   ugc
-    # end
+    @answers = get_ugc_infos(@data["form_response"]["answers"]) 
+    @session = @data["form_response"]["hidden"]["session"]
+    @user = User.where(session_id: @session)
+    @user.address = @answers["25423131"]
+    @user.zipcode = @answers["25424220"]
+    @user.city = @answers["25424218"]
+    @service = @data["form_response"]["hidden"]["service"]
+    @unsub = Unsub.create!(user: @user, service_id: @service, form_complete: @data)
+    render nothing: true
   end
 
   private
@@ -41,31 +45,17 @@ class WebhooksController < ApplicationController
     hash
   end
 
-  # def ugc
-  #   @answers = answers_to_hash(@data["form_response"]["answers"]) 
-  #   @id = @data["form_response"]["hidden"]["id"].to_i
-  #   @user = User.where(id: @id)
-  #   @user.firstname = @answers["25108292"]
-  #   @user.lastname = @answers["25108413"]
-  #   @user.email = @answers["25423473"]
-  #   @user.address = @answers["25423131"]
-  #   @user.zipcode = @answers["25424220"]
-  #   @user.city = @answers["25424218"]
-  #   @service = @data["form_response"]["hidden"]["service"]
-  #   @unsub = Unsub.create!(user: @user, service_id: @service, form_complete: @data)
-  # end
-
-  # def answers_to_hash(array)
-  #   hash = {} 
-  #   array.each do |q|
-  #     types = ['text', 'email']
-  #     type = q['type']
-  #     if types.include?(type)
-  #       hash[q["field"]["id"]] = q[type]
-  #     elsif type == 'choice'
-  #       hash[q['field']['id']] = q["choice"]
-  #     end
-  #   end
-  #   return hash
-  # end
+  def get_ugc_infos(array)
+    hash = {} 
+    array.each do |q|
+      types = ['text', 'email']
+      type = q['type']
+      if types.include?(type)
+        hash[q["field"]["id"]] = q[type]
+      elsif type == 'choice'
+        hash[q['field']['id']] = q["choice"]
+      end
+    end
+    return hash
+  end
 end

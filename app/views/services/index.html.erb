@@ -18,7 +18,7 @@
               <div class="caption">
                 <h5><%= service.name %></h5>
               </div>
-                <%= button_to "Résilier", "/services/#{service.id}/unsubs/new", class: "btn btn-success", method: :get %>
+                <%= link_to "Résilier", service, class: "btn btn-success", method: :get %>
             </a>
           </div>
         <% end %>

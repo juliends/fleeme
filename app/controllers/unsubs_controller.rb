@@ -3,9 +3,9 @@ class UnsubsController < ApplicationController
   def new
     @service = Service.find(params[:service_id])
     @session = session.id
-    @email = Devise.friendly_token.first(8)
-    @user = User.create!(email: @email,  session_id: @session)
-    sign_in(:user, @user)
+    # @email = Devise.friendly_token.first(8)
+    # @user = User.create!(email: @email,  session_id: @session)
+    # sign_in(:user, @user)
   end
 
   def show

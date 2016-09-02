@@ -15,5 +15,5 @@ class UnsubsController < ApplicationController
 
   def set_user
     @user = User.where(session_id: @session)
-  end
+  end!
 end

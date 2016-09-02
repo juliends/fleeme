@@ -10,12 +10,12 @@ class WebhooksController < ApplicationController
 
   def user
     @answers= @data["form_response"]["answers"]
-    p get_user_infos(@answers)
+    @infos = get_user_infos(@answers)
+    User.create!(firstname: @infos["28860463"], lastname: @infos["28860464"], email: @infos["28860465"])
+    render nothing: true
   end
 
   def ugc
-    
-    # Unsub.create(form_complete: @data, user_id: @data["form_response"])
     # if @data["form_response"]["form_id"] == "QyqJ49"
     #   ugc
     # else 
@@ -23,12 +23,11 @@ class WebhooksController < ApplicationController
     # end
   end
 
-
   private
 
   def set_data
     request.headers['Content-Type'] == 'application/json' ? @data = JSON.parse(request.body.read) : @data = params.as_json
-    render nothing: true, status: 200 if @data = {}
+    render nothing: true, status: 200 if @data == {}
   end
 
   def get_user_infos(array)
@@ -40,8 +39,6 @@ class WebhooksController < ApplicationController
     end
     hash
   end
-
-
 
   # def ugc
   #   @answers = answers_to_hash(@data["form_response"]["answers"]) 

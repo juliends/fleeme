@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
+
   root to: 'services#index'
+
+  get '/offers' => 'pages#offers'
 
   resources :services do
     resources :unsubs, only: [ :new, :create, :show]

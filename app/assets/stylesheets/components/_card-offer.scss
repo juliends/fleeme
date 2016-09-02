@@ -1,0 +1,65 @@
+@media only screen and (min-width: 768px) {
+  .row.is-flex {
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .row.is-flex > [class*='col-'] {
+      display: flex;
+      flex-direction: column;
+  }
+}
+
+
+.card-body {
+  margin-bottom: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding:10px;
+  .title {
+    padding-top: 15px;
+    border-radius:5px 5px 0px 0px;
+    margin: 0px;
+    height:50px;
+  }
+  .card-content {
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .description {
+      padding: 10px 70px 10px 90px;
+      .fa {
+        padding-right: 10px;
+        margin-left:-17px;
+      }
+      li {
+        font-size: 1.3rem;
+        padding-bottom: 5px;
+      }
+    }
+    .price {
+      margin:0px;
+      h2 {
+        margin-bottom: 0px;
+      }
+      .price-number {
+        font-size: 5rem;
+      }
+      .price-symbol {
+        font-size: 3rem;
+        vertical-align: super;
+      }
+      p {
+        font-size:1.3rem;
+      }
+    }
+    .btn {
+      padding: 10px 20px;
+      width: auto;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+  }
+}

@@ -5,6 +5,11 @@
  * ------------------------------------- */
 
 // Paddings
+
+.full-page {
+  min-height: calc(100vh - 70px);
+}
+
 .padded {
   padding-top: 5em;
   padding-bottom: 5em;
@@ -49,7 +54,7 @@
 }
 
 .tx-grey {
-  color: #aeaeae;
+  color: #696969;
 }
 
 .tx-white {
@@ -63,6 +68,8 @@
 .tx-secondary {
   color: $secondary;
 }
+
+
 
 .vertical-padding-2 {
   padding: 2rem 0rem;

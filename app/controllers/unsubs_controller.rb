@@ -1,22 +1,22 @@
 class UnsubsController < ApplicationController
 
+  after_action :set_user, only: [ :new, ]
+
   def new
     @service = Service.find(params[:service_id])
     @session = session.id
-    # @email = Devise.friendly_token.first(8)
-    # @user = User.create!(email: @email,  session_id: @session)
-    # sign_in(:user, @user)
   end
 
   def show
-    # Permet de récupérer le User mais risque de latence si Typeform ne répond pas rapidement
-    # @session = session.id
-    # current_user = User.where(session_id: @session)
-    raise
   end
 
 
   private
+
+  def set_user
+    @user = User.where(session_id: @session)
+    sign_in @user
+  end
 
   # if @data["form_response"]["form_id"] == "QyqJ49"
     #   ugc

@@ -9,9 +9,10 @@ class WebhooksController < ApplicationController
   before_action :set_data, only: [ :ugc, :user ]
 
   def user
-    @answers= @data["form_response"]["answers"]
+    @answers = @data["form_response"]["answers"]
+    @session = @data["form_response"]["hidden"]["session"]
     @infos = get_user_infos(@answers)
-    User.create!(firstname: @infos["28860463"], lastname: @infos["28860464"], email: @infos["28860465"])
+    User.create!(firstname: @infos["28860463"], lastname: @infos["28860464"], email: @infos["28860465"], session_id: @session)
     render nothing: true
   end
 

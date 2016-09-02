@@ -8,9 +8,6 @@ class ServicesController < ApplicationController
 
   def show
     @session = session.id
-    # @email = Devise.friendly_token.first(8)
-    # @user = User.create!(email: @email,  session_id: @session)
-    # sign_in(:user, @user)
   end
 
   private

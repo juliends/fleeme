@@ -6,7 +6,12 @@ class WebhooksController < ApplicationController
 
   # Typeform attend une réponse de notre controlleur pour valider la route
   # set_data permet de valider que le json contient des informations
-  before_action :set_data, only: [ :receive, :user ]
+  before_action :set_data, only: [ :ugc, :user ]
+
+  def user
+    @answers= @data["form_response"]["answers"]
+    p get_user_infos(@answers)
+  end
 
   def ugc
     
@@ -16,25 +21,27 @@ class WebhooksController < ApplicationController
     # else 
     #   ugc
     # end
-
-   
-    render nothing: true, status: 200
   end
 
-  def user
-    @answers= @data["form_response"]["answers"]
-  end
 
   private
 
   def set_data
-    if request.headers['Content-Type'] == 'application/json'
-      @data = JSON.parse(request.body.read)
-    else
-      @data = params.as_json
-    end
+    request.headers['Content-Type'] == 'application/json' ? @data = JSON.parse(request.body.read) : @data = params.as_json
     render nothing: true, status: 200 if @data = {}
   end
+
+  def get_user_infos(array)
+    hash = {} 
+    array.each do |q|
+      types = ['text', 'email']
+      type = q['type']
+      hash[q["field"]["id"]] = q[type] if types.include?(type)
+    end
+    hash
+  end
+
+
 
   # def ugc
   #   @answers = answers_to_hash(@data["form_response"]["answers"]) 

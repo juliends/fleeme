@@ -3,17 +3,16 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   mount Attachinary::Engine => "/attachinary"
-  
-  devise_for :users
-  root to: 'services#index'
 
-  match '/webhook/ugc' => 'webhooks#ugc', via: :post, defaults: { formats: :json }
-  match '/webhook/user' => 'webhooks#user', via: :post, defaults: { formats: :json }
+  devise_for :users
+
+  root to: 'services#index'
 
   resources :services do
     resources :unsubs, only: [ :new, :show]
   end
 
   get '/unsub' => 'unsubs#show'
-  
+  get '/offers' => 'pages#offers'
+
 end

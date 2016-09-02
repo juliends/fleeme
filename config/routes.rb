@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'services#index'
 
-  match '/webhook' => 'webhooks#receive', via: :post, defaults: { formats: :json }
+  match '/webhook/ugc' => 'webhooks#ugc', via: :post, defaults: { formats: :json }
+  match '/webhook/user' => 'webhooks#user', via: :post, defaults: { formats: :json }
+
 
   resources :services do
     resources :unsubs, only: [ :new, :show]

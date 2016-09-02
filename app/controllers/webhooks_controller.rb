@@ -4,22 +4,36 @@ class WebhooksController < ApplicationController
   protect_from_forgery except: :receive
   skip_before_filter :verify_authenticity_token
 
-  def receive 
-    # Typeform attend une réponse de notre controlleur pour valider la route
-    if request.headers['Content-Type'] == 'application/json'
-      @data = JSON.parse(request.body.read)
-    else
-      @data = params.as_json
-    end
+  # Typeform attend une réponse de notre controlleur pour valider la route
+  # set_data permet de valider que le json contient des informations
+  before_action :set_data, only: [ :receive, :user ]
 
-    Unsub.create(form_complete: @data, user_id: @data["form_response"])
+  def ugc
+    
+    # Unsub.create(form_complete: @data, user_id: @data["form_response"])
     # if @data["form_response"]["form_id"] == "QyqJ49"
     #   ugc
     # else 
     #   ugc
     # end
 
+   
     render nothing: true, status: 200
+  end
+
+  def user
+    @answers= @data["form_response"]["answers"]
+  end
+
+  private
+
+  def set_data
+    if request.headers['Content-Type'] == 'application/json'
+      @data = JSON.parse(request.body.read)
+    else
+      @data = params.as_json
+    end
+    render nothing: true, status: 200 if @data = {}
   end
 
   # def ugc

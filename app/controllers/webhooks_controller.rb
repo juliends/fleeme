@@ -42,7 +42,7 @@ class WebhooksController < ApplicationController
       type = q['type']
       hash[q["field"]["id"]] = q[type] if types.include?(type)
     end
-    hash
+    return hash
   end
 
   def get_ugc_infos(array)

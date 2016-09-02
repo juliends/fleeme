@@ -32,7 +32,8 @@
               <div class="caption">
                 <h5><%= service.name %></h5>
               </div>
-                <%= link_to "Résilier", service, class: "btn btn-success", method: :get %>
+
+              <%= button_to "Résilier", service, class: "btn btn-success", method: :get %>
             </a>
           </div>
         <% end %>

@@ -9,10 +9,10 @@ class WebhooksController < ApplicationController
   before_action :set_data, only: [ :ugc, :user ]
 
   def user
-    @answers = @data["form_response"]["answers"]
-    @session = @data["form_response"]["hidden"]["session"]
-    @infos = get_user_infos(@answers)
-    @user = User.create!(firstname: @infos["28860463"], lastname: @infos["28860464"], email: @infos["28860465"], session_id: @session)
+    p @answers = @data["form_response"]["answers"]
+    p @session = @data["form_response"]["hidden"]["session"]
+    p @infos = get_user_infos(@answers)
+    p @user = User.create!(firstname: @infos["28860463"], lastname: @infos["28860464"], email: @infos["28860465"], session_id: @session)
     render nothing: true
   end
 
@@ -31,7 +31,7 @@ class WebhooksController < ApplicationController
   private
 
   def set_data
-    request.headers['Content-Type'] == 'application/json' ? @data = JSON.parse(request.body.read) : @data = params.as_json
+    p request.headers['Content-Type'] == 'application/json' ? @data = JSON.parse(request.body.read) : @data = params.as_json
     render nothing: true, status: 200 if @data == {}
   end
 

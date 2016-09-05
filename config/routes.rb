@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :unsubs, only: [ :new, :show]
   end
 
+  match '/webhook/user' => 'webhooks#user', via: :post, defaults: { formats: :json }
+  match '/webhook/ugc' => 'webhooks#ugc', via: :post, defaults: { formats: :json }
+
   get '/unsub' => 'unsubs#show'
   get '/offers' => 'pages#offers'
 

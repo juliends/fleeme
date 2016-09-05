@@ -14,6 +14,6 @@ class UnsubsController < ApplicationController
 
   def set_user
     @user = User.where(session_id: @session).first
-    sign_in(:user, @user)
+    # sign_in(:user, @user)
   end
 end

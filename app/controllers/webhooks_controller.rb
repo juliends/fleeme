@@ -9,19 +9,19 @@ class WebhooksController < ApplicationController
   before_action :set_data, only: [ :ugc, :user ]
 
   def user
-    p @answers = @data["form_response"]["answers"]
-    p @session = @data["form_response"]["hidden"]["session"]
-    p @infos = get_user_infos(@answers)
-    p @user = User.create!(firstname: @infos["28860463"], lastname: @infos["28860464"], email: @infos["28860465"], session_id: @session)
+    @answers = @data["form_response"]["answers"]
+    @session = @data["form_response"]["hidden"]["session"]
+    @infos = get_user_infos(@answers)
+    @user = User.create!(firstname: @infos["28860463"], lastname: @infos["28860464"], email: @infos["28860465"], session_id: @session)
     render nothing: true
   end
 
   def ugc
     @answers = get_ugc_infos(@data["form_response"]["answers"]) 
     @session = @data["form_response"]["hidden"]["session"]
-    @user = User.where(session_id: @session)
-    @user.address = @answers["25423131"]
-    @user.zipcode = @answers["25424220"]
+    @user = User.where(session_id: @session).first
+    @user.address = @answers["25424220"]
+    # @user.zipcode = @answers["25424220"]
     @user.city = @answers["25424218"]
     @service = @data["form_response"]["hidden"]["service"]
     @unsub = Unsub.create!(user: @user, service_id: @service, form_complete: @data)

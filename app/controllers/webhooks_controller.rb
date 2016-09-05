@@ -32,7 +32,7 @@ class WebhooksController < ApplicationController
 
   def set_data
     p request.headers['Content-Type'] == 'application/json' ? @data = JSON.parse(request.body.read) : @data = params.as_json
-    render nothing: true, status: 200 if @data == {}
+    p render nothing: true, status: 200 if @data == {}
   end
 
   def get_user_infos(array)

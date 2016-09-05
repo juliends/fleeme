@@ -8,6 +8,10 @@ class ServicesController < ApplicationController
 
   def show
     @session = session.id
+    @email = Faker::Internet.email
+    @user = User.create!(email: @email)
+    # warden.authenticate!(:scope => :user)
+    sign_in(user: @user)
   end
 
   private

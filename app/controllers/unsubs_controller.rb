@@ -1,10 +1,9 @@
 class UnsubsController < ApplicationController
 
-  after_action :set_user, only: [ :new, ]
+  before_action :set_user, only: [ :new, ]
 
   def new
     @service = Service.find(params[:service_id])
-    @session = session.id
   end
 
   def show
@@ -13,7 +12,8 @@ class UnsubsController < ApplicationController
   private
 
   def set_user
-    @user = User.where(session_id: @session).first
-    # sign_in(:user, @user)
+    @session = session.id
+    @user = User.find_by_session_id(@session)
+    sign_in(:user, @user)
   end
 end

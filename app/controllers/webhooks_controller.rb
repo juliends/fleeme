@@ -8,21 +8,28 @@ class WebhooksController < ApplicationController
   # set_data permet de valider que le json contient des informations
   before_action :set_data, only: [ :ugc, :user ]
 
+  # Update l'user avec les infos récupérées par typeform
   def user
     @answers = @data["form_response"]["answers"]
-    @session = @data["form_response"]["hidden"]["session"]
+    @id = @data["form_response"]["hidden"]["id"].to_i
+    @user = User.find(@id)
     @infos = get_user_infos(@answers)
-    @user = User.create!(firstname: @infos["28860463"], lastname: @infos["28860464"], email: @infos["28860465"], session_id: @session)
+    @user.firstname = @infos["28860463"]
+    @user.lastname = @infos["28860464"]
+    @user.email = @infos["28860465"]
+    @user.save
     render nothing: true
   end
 
+  # Crée un Unsub pour le service UGC, Update également l' User
   def ugc
     @answers = get_ugc_infos(@data["form_response"]["answers"]) 
-    @session = @data["form_response"]["hidden"]["session"]
-    @user = User.where(session_id: @session).first
+    @id = @data["form_response"]["hidden"]["id"].to_i
+    @user = User.find(@id)
     @user.address = @answers["25424220"]
-    # @user.zipcode = @answers["25424220"]
+    @user.zipcode = @answers["29092897"]
     @user.city = @answers["25424218"]
+    @user.save
     @service = @data["form_response"]["hidden"]["service"]
     @unsub = Unsub.create!(user: @user, service_id: @service, form_complete: @data)
     render nothing: true
@@ -31,8 +38,8 @@ class WebhooksController < ApplicationController
   private
 
   def set_data
-    p request.headers['Content-Type'] == 'application/json' ? @data = JSON.parse(request.body.read) : @data = params.as_json
-    p render nothing: true, status: 200 if @data == {}
+    request.headers['Content-Type'] == 'application/json' ? @data = JSON.parse(request.body.read) : @data = params.as_json
+    render nothing: true, status: 200 if @data == {}
   end
 
   def get_user_infos(array)

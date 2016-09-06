@@ -8,10 +8,9 @@ class ServicesController < ApplicationController
 
   def show
     @session = session.id
-    # @email = Faker::Internet.email
-    # @user = User.create!(email: @email)
-    # warden.authenticate!(:scope => :user)
-    # sign_in(user: @user)
+    @email = Devise.friendly_token.first(8)
+    @user = User.create!(email: @email, session_id: @session)
+    sign_in @user
   end
 
   private

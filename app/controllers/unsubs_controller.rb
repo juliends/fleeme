@@ -7,6 +7,7 @@ class UnsubsController < ApplicationController
   end
 
   def show
+    @unsub = Unsub.where(user_id: current_user).last
   end
 
 end

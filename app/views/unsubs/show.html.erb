@@ -1,0 +1,36 @@
+<div class="container">
+  <div>
+    <p><%= current_user.firstname.capitalize %> <%= current_user.lastname.capitalize.capitalize %></p>
+    <p><%= current_user.address %></p>
+    <p><%= current_user.zipcode %> <%= current_user.city %></p>
+  </div>
+  <div>
+    <p><%= @unsub.service.company %></p>
+    <p><%= @unsub.service.name %></p>
+    <p><%= @unsub.service.street_address %></p>
+    <p><%= @unsub.service.zip_code %> <%= @unsub.service.city %></p>
+  </div>
+  <div>
+    <p><%= current_user.city %>, le <%= Date.today.strftime("%d-%m-%Y") %></p>
+  </div>
+
+  <hr>
+
+  <div>
+   <p> Objet: Résiliation de la carte cinéma, référence client N° <% @unsub.form_complete %> </p>
+  </div>
+
+  <div>
+    <p>Madame, Monsieur</p>
+
+    <p><% %></p>
+
+    <p>Je vous prie de supprimer de vos fichiers toute information relative à mes coordonnées postales et bancaires. Je m'oppose en particulier à toute utilisation, ou mise à disposition à des organismes extérieurs, de mes coordonnées personnelles à des fins commerciales.</p>
+
+    <p>Veuillez accepter Madame, Monsieur, l' expression de mes salutations distinguées.</p>
+  </div>
+
+  <div>
+    <p><%= current_user.firstname.capitalize %> <%= current_user.lastname.capitalize.capitalize %></p>
+  </div>
+</div>

@@ -6,6 +6,5 @@ class User < ActiveRecord::Base
          # Commenter validatable rend la création d' users sans mot de passe possible
          #:validatable
         
-  has_many :unsubs 
-
+  has_many :unsubs, dependent: :destroy
 end

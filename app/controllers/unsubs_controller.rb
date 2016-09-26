@@ -7,7 +7,12 @@ class UnsubsController < ApplicationController
   end
 
   def show
-    @unsub = Unsub.where(user_id: current_user).last
+    @unsub = Unsub.find(current_user.id)
+  end
+
+  # non-CRUD actions
+  def offers
+    @user = current_user
   end
 
 end

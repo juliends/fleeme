@@ -25,6 +25,9 @@ gem "coffee-rails"
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'active_skin'
 
+gem 'money-rails'
+gem 'stripe'
+
 
 group :development, :test do
   gem 'binding_of_caller'

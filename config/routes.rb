@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   match '/webhook/ugc' => 'webhooks#ugc', via: :post, defaults: { formats: :json }
 
   get '/unsub' => 'unsubs#show'
-  get '/offers' => 'pages#offers'
+  get '/offers' => 'unsubs#offers'
+
+  resources :orders, only: [:show, :create]
 
 end

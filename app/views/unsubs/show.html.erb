@@ -1,8 +1,8 @@
 <div class="container">
   <div>
-    <p><%= current_user.firstname.capitalize %> <%= current_user.lastname.capitalize.capitalize %></p>
-    <p><%= current_user.address %></p>
-    <p><%= current_user.zipcode %> <%= current_user.city %></p>
+    <p><%= @unsub.user.firstname.capitalize %> <%= @unsub.user.lastname.capitalize.capitalize %></p>
+    <p><%= @unsub.user.address %></p>
+    <p><%= @unsub.user.zipcode %> <%= @unsub.user.city %></p>
   </div>
   <div>
     <p><%= @unsub.service.company %></p>

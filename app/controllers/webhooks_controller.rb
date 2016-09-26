@@ -23,7 +23,7 @@ class WebhooksController < ApplicationController
 
   # Crée un Unsub pour le service UGC, Update également l' User
   def ugc
-    @answers = get_ugc_infos(@data["form_response"]["answers"]) 
+    @answers = get_ugc_infos(@data["form_response"]["answers"])
     @id = @data["form_response"]["hidden"]["id"].to_i
     @user = User.find(@id)
     @user.address = @answers["25424220"]
@@ -31,7 +31,7 @@ class WebhooksController < ApplicationController
     @user.city = @answers["25424218"]
     @user.save
     @service = @data["form_response"]["hidden"]["service"]
-    @unsub = Unsub.create!(user: @user, service_id: @service, form_complete: @data)
+    @unsub = Unsub.create!(user: @user, service_id: @service, form_complete: @data, price_cents: 700, sku: 'ugc')
     render nothing: true
   end
 
@@ -43,7 +43,7 @@ class WebhooksController < ApplicationController
   end
 
   def get_user_infos(array)
-    hash = {} 
+    hash = {}
     array.each do |q|
       types = ['text', 'email']
       type = q['type']
@@ -53,7 +53,7 @@ class WebhooksController < ApplicationController
   end
 
   def get_ugc_infos(array)
-    hash = {} 
+    hash = {}
     array.each do |q|
       types = ['text', 'email']
       type = q['type']

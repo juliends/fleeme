@@ -13,6 +13,9 @@ class UnsubsController < ApplicationController
   # non-CRUD actions
   def offers
     @user = current_user
+    # last line must be change cause Typeform might not send the information on time.
+    # huge issue that must be taking care of.
+    @unsub = Unsub.last
   end
 
 end

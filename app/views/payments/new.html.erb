@@ -1,0 +1,16 @@
+<!-- app/views/payments/new.html.erb -->
+<h1>Achat d'un lettre de résiliation pour le service <%= @unsub.sku %></h1>
+<%= form_tag unsub_payments_path(@unsub) do %>
+  <article>
+    <label class="amount">
+      <span>Amount: <%= humanized_money_with_symbol(@unsub.price_cents) %></span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-name="Service de résiliation"
+    data-description="Service <%= @unsub.sku %>"
+    data-amount="<%= @unsub.price_cents %>"
+    data-currency="EUR"></script>
+<% end %>

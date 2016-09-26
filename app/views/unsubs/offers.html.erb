@@ -1,0 +1,66 @@
+<div class="full-page" style="background-image: linear-gradient(135deg, #efefef 0%,rgba(239, 239, 239, 0)), url('/assets/pattern.png'); background-position: bottom;">
+  <div class="container-fluid bg-primary">
+    <div class="row">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-xs-12">
+            <h5 class="vertical-padding-2"><i class="fa fa-file-text"></i> Merci d'avoir rempli le formulaire Nicolas. Nous pouvons maintenant générer votre courrier personnalisé.</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid " >
+    <div class="row vertical-padding-2">
+      <div class="container">
+        <div class="row text-center vertical-padding-2">
+          <div class="col-xs-12 text-center"></div>
+            <h3 class="tx-primary">Comment souhaitez-vous quitter UGC Ciné Cité ?</h3>
+          </div>
+        </div>
+        <div class="row vertical-padding-4 is-flex">
+          <div class="col-xs-12 col-md-4 col-md-offset-1 card-body">
+            <div class=" bg-white text-center card-content">
+              <h4 class="title tx-primary card-free">Téléchargement de votre courrier personnalisée</h4>
+
+                <div class="price">
+                  <h2 class="price-number tx-secondary">GRATUIT</h2>
+                  <p class="tx-grey">(Nécessite de partager Fleeme)</p>
+                </div>
+                <ul class="text-left list-unstyled tx-grey description">
+                  <li> <i class="fa fa-check tx-secondary fa-fw" aria-hidden="true"></i>Génération de votre courier</li>
+                  <li> <i class="fa fa-times fa-fw" aria-hidden="true"></i><del>Envoi recommandé à UGC Ciné Cité</del></li>
+                  <li> <i class="fa fa-times fa-fw" aria-hidden="true"></i><del>Envoi d'une copie du courrier à votre adresse mail</del></li>
+                  <li> <i class="fa fa-times fa-fw" aria-hidden="true"></i><del>Accusé de réception sous 3 jours</del></li>
+                </ul>
+                <h5 class="tx-primary">Vous vous occupez du reste !</h5>
+                <button class="btn btn-success">Télécharger</button>
+
+            </div>
+          </div>
+          <div class="col-md-2">
+          </div>
+          <div class="col-xs-12 col-md-4 card-body">
+            <div class=" bg-white text-center card-content">
+              <h4 class="title tx-primary">Envoi automatique<br>Fleeme</h4>
+
+                <div class="price">
+                  <h2 class="tx-secondary price-number">7<span class="price-symbol">€</span></h2>
+                  <p class="tx-grey">(Prix d'un recommandé + 2€)</p>
+                </div>
+                <ul class="text-left list-unstyled tx-grey description">
+                  <li> <i class="fa fa-check tx-secondary fa-fw" aria-hidden="true"></i>Génération de votre courier</li>
+                  <li> <i class="fa fa-check tx-secondary fa-fw" aria-hidden="true"></i>Envoi recommandé à UGC Ciné Cité</li>
+                  <li> <i class="fa fa-check tx-secondary fa-fw" aria-hidden="true"></i>Envoi d'une copie du courrier à votre adresse mail</li>
+                  <li> <i class="fa fa-check tx-secondary fa-fw" aria-hidden="true"></i>Accusé de réception sous 3 jours</li>
+                </ul>
+                <h5 class="tx-primary">Fleeme s'occupe de tout !</h5>
+                <%= link_to "Résilier", new_unsub_payments_path(@unsub), class:"btn btn-success" %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

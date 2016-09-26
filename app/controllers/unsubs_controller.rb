@@ -7,7 +7,15 @@ class UnsubsController < ApplicationController
   end
 
   def show
-    @unsub = Unsub.where(user_id: current_user).last
+    @unsub = Unsub.find(current_user.id)
+  end
+
+  # non-CRUD actions
+  def offers
+    @user = current_user
+    # last line must be change cause Typeform might not send the information on time.
+    # huge issue that must be taking care of.
+    @unsub = Unsub.last
   end
 
 end

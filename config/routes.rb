@@ -9,13 +9,20 @@ Rails.application.routes.draw do
   root to: 'services#index'
 
   resources :services do
-    resources :unsubs, only: [ :new, :show]
+    resources :unsubs, only: :new
+  end
+
+  resources :unsubs, only: [:show] do
+    member do
+      get 'offers', to: "unsubs#offers"
+    end
+    resource :payments, only: [:new, :create]
   end
 
   match '/webhook/user' => 'webhooks#user', via: :post, defaults: { formats: :json }
   match '/webhook/ugc' => 'webhooks#ugc', via: :post, defaults: { formats: :json }
 
   get '/unsub' => 'unsubs#show'
-  get '/offers' => 'pages#offers'
+  # get '/offers' => 'unsubs#offers'
 
 end

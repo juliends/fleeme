@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906100553) do
+ActiveRecord::Schema.define(version: 20160926143736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,8 +81,12 @@ ActiveRecord::Schema.define(version: 20160906100553) do
     t.integer  "user_id"
     t.integer  "service_id"
     t.json     "form_complete"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "price_cents",   default: 0, null: false
+    t.string   "sku"
+    t.string   "state"
+    t.json     "payment"
   end
 
   add_index "unsubs", ["service_id"], name: "index_unsubs_on_service_id", using: :btree

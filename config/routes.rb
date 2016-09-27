@@ -22,6 +22,4 @@ Rails.application.routes.draw do
   match '/webhook/user' => 'webhooks#user', via: :post, defaults: { formats: :json }
   match '/webhook/ugc' => 'webhooks#ugc', via: :post, defaults: { formats: :json }
 
-  # get '/unsub' => 'unsubs#show'
-  # get '/offers' => 'unsubs#offers'
 end

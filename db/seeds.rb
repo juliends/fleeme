@@ -15,7 +15,7 @@ services_attributes = [
     zip_code: 92206,
     city: "Neuilly sur Seine Cedex",
     postal_box: "TSA 30 200",
-    form_specs: "https://juliendasilva.typeform.com/to/QyqJ49?",
+    form_specs: "https://juliendasilva.typeform.com/to/QyqJ49",
     text_base: {
       "object": "Objet: Résiliation de la carte cinéma, référence client N°",
       "hello_sentence": "Madame, Monsieur,",
@@ -45,7 +45,6 @@ services_attributes = [
       "client_deletion": "Je vous prie de supprimer de vos fichiers toute information relative à mes coordonnées postales et bancaires. Je m'oppose en particulier à toute utilisation, ou mise à disposition à des organismes extérieurs, de mes coordonnées personnelles à des fins commerciales.",
       "politeness_sentence": "Veuillez accepter Madame, Monsieur, l' expression de mes salutations distinguées.",
     }
-
   }
 ]
 services_attributes.each { |params| Service.create!(params) }

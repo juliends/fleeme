@@ -23,15 +23,21 @@ class WebhooksController < ApplicationController
 
   # Crée un Unsub pour le service UGC, Update également l' User
   def ugc
-    @answers = get_ugc_infos(@data["form_response"]["answers"])
+    p @answers = get_ugc_infos(@data["form_response"]["answers"])
     @id = @data["form_response"]["hidden"]["id"].to_i
     @user = User.find(@id)
     @user.address = @answers["25424220"]
     @user.zipcode = @answers["29092897"]
     @user.city = @answers["25424218"]
     @user.save
-    @service = @data["form_response"]["hidden"]["service"]
-    @unsub = Unsub.create!(user: @user, service_id: @service, form_complete: @data, price_cents: 700, sku: 'ugc')
+    @service = @data["form_response"]["hidden"]["service"].to_i
+    @unsub_id = @data["form_response"]["hidden"]["unsub"].to_i
+    @unsub = Unsub.find(@unsub_id)
+    @unsub.service_id = @service
+    @unsub.form_complete = @data
+    @unsub.price_cents = 700
+    @unsub.sku = 'ugc'
+    @unsub.save
     render nothing: true
   end
 

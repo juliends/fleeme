@@ -3,7 +3,8 @@ class UnsubsController < ApplicationController
   def new
     @service = Service.find(params[:service_id])
     @session = session.id
-    @user = current_user.id
+    @unsub = Unsub.create!(user_id: current_user.id)
+    @id = @unsub.id
   end
 
   def show
@@ -12,10 +13,7 @@ class UnsubsController < ApplicationController
 
   # non-CRUD actions
   def offers
-    @user = current_user
-    # last line must be change cause Typeform might not send the information on time.
-    # huge issue that must be taking care of.
-    @unsub = Unsub.last
+    @unsub = Unsub.find(current_user)
   end
 
 end

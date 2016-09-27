@@ -1,4 +1,5 @@
 class WebhooksController < ApplicationController
+  include Answer
   # Ici il faut annuller la vérification des tokens qui protège toute app rails d' attaques csrf
   # Les deux lignes suivantes ont le même effet
   protect_from_forgery except: :receive
@@ -37,6 +38,8 @@ class WebhooksController < ApplicationController
     @unsub.form_complete = @data
     @unsub.price_cents = 700
     @unsub.sku = 'ugc'
+    p parse_ugc(@data["form_response"]["answers"])
+    @unsub.details = parse_ugc(@data["form_response"]["answers"])
     @unsub.save
     render nothing: true
   end

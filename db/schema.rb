@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927133906) do
+ActiveRecord::Schema.define(version: 20160927164210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20160927133906) do
     t.string   "sku"
     t.string   "state"
     t.json     "payment"
+    t.json     "details"
   end
 
   add_index "unsubs", ["service_id"], name: "index_unsubs_on_service_id", using: :btree

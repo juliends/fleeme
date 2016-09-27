@@ -4,6 +4,7 @@ class UnsubsController < ApplicationController
     @service = Service.find(params[:service_id])
     @session = session.id
     @unsub = Unsub.create!(user_id: current_user.id)
+    @id = @unsub.id
   end
 
   def show

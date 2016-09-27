@@ -15,7 +15,7 @@ services_attributes = [
     zip_code: 92206,
     city: "Neuilly sur Seine Cedex",
     postal_box: "TSA 30 200",
-    form_specs: "https://juliendasilva.typeform.com/to/QyqJ49?"
+    form_specs: "https://juliendasilva.typeform.com/to/QyqJ49"
   }
 ]
 services_attributes.each { |params| Service.create!(params) }

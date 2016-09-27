@@ -31,7 +31,7 @@ class WebhooksController < ApplicationController
     @user.city = @answers["25424218"]
     @user.save
     @service = @data["form_response"]["hidden"]["service"].to_i
-    @unsub_id = @data["form_response"]["hidden"]["unsub_id"].to_i
+    @unsub_id = @data["form_response"]["hidden"]["unsub"].to_i
     @unsub = Unsub.find(@unsub_id)
     @unsub.service_id = @service
     @unsub.form_complete = @data

@@ -23,7 +23,7 @@ class WebhooksController < ApplicationController
 
   # Crée un Unsub pour le service UGC, Update également l' User
   def ugc
-    @answers = get_ugc_infos(@data["form_response"]["answers"])
+    p @answers = get_ugc_infos(@data["form_response"]["answers"])
     @id = @data["form_response"]["hidden"]["id"].to_i
     @user = User.find(@id)
     @user.address = @answers["25424220"]

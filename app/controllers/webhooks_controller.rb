@@ -30,14 +30,14 @@ class WebhooksController < ApplicationController
     @user.zipcode = @answers["29092897"]
     @user.city = @answers["25424218"]
     @user.save
-    p @service = @data["form_response"]["hidden"]["service"].to_i
-    p @unsub_id = @data["form_response"]["hidden"]["unsub_id"].to_i
-    p @unsub = Unsub.find(@unsub_id)
-    p @unsub.service_id = @service
-    p @unsub.form_complete = @data
-    p @unsub.price_cents = 700
-    p @unsub.sku = 'ugc'
-    # Unsub.create!(user: @user, service_id: @service,form_complete: @data, price_cents: 700, sku: 'ugc')
+    @service = @data["form_response"]["hidden"]["service"].to_i
+    @unsub_id = @data["form_response"]["hidden"]["unsub_id"].to_i
+    @unsub = Unsub.find(@unsub_id)
+    @unsub.service_id = @service
+    @unsub.form_complete = @data
+    @unsub.price_cents = 700
+    @unsub.sku = 'ugc'
+    @unsub.save
     render nothing: true
   end
 

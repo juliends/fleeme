@@ -1,17 +1,27 @@
 <div class="container">
-  <div>
-    <p><%= @unsub.user.firstname.capitalize %> <%= @unsub.user.lastname.capitalize.capitalize %></p>
-    <p><%= @unsub.user.address %></p>
-    <p><%= @unsub.user.zipcode %> <%= @unsub.user.city %></p>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <h5>Voici votre courrier de résiliation pour le service <%= @unsub.service.name %></h5>
+      <div class="letter">
+        <%= markdown(@letter.text) %>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div>
+    <p><%# @unsub.user.firstname.capitalize %> <%# @unsub.user.lastname.capitalize.capitalize %></p>
+    <p><%# @unsub.user.address %></p>
+    <p><%# @unsub.user.zipcode %> <%# @unsub.user.city %></p>
   </div>
   <div>
-    <p><%= @unsub.service.company %></p>
-    <p><%= @unsub.service.name %></p>
-    <p><%= @unsub.service.street_address %></p>
-    <p><%= @unsub.service.zip_code %> <%= @unsub.service.city %></p>
+    <p><%# @unsub.service.company %></p>
+    <p><%# @unsub.service.name %></p>
+    <p><%# @unsub.service.street_address %></p>
+    <p><%# @unsub.service.zip_code %> <%# @unsub.service.city %></p>
   </div>
   <div>
-    <p><%= current_user.city %>, le <%= Date.today.strftime("%d-%m-%Y") %></p>
+    <p><%# current_user.city %>, le <%# Date.today.strftime("%d-%m-%Y") %></p>
   </div>
 
   <hr>
@@ -23,7 +33,7 @@
   <div>
     <p>Madame, Monsieur</p>
 
-    <p><% %></p>
+    <p></p>
 
     <p>Je vous prie de supprimer de vos fichiers toute information relative à mes coordonnées postales et bancaires. Je m'oppose en particulier à toute utilisation, ou mise à disposition à des organismes extérieurs, de mes coordonnées personnelles à des fins commerciales.</p>
 
@@ -31,6 +41,6 @@
   </div>
 
   <div>
-    <p><%= current_user.firstname.capitalize %> <%= current_user.lastname.capitalize.capitalize %></p>
-  </div>
+    <p><%# current_user.firstname.capitalize %> <%# current_user.lastname.capitalize.capitalize %></p>
+  </div> -->
 </div>

@@ -1,3 +1,18 @@
 // Place all the styles related to the unsubs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.letter {
+  margin: 30px 0px;
+  padding: 30px 0px;
+  display: flex;
+  flex-direction: column;
+  p {
+    &:nth-child(2) {
+      text-align: right;
+    }
+    &:last-child {
+      text-align: justify;
+    }
+  }
+}

@@ -25,8 +25,12 @@ gem "coffee-rails"
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'active_skin'
 
+# payment process gems
 gem 'money-rails'
 gem 'stripe'
+
+# markdown gem
+gem 'redcarpet'
 
 
 group :development, :test do

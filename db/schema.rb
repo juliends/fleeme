@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160926143736) do
+ActiveRecord::Schema.define(version: 20160928132812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(version: 20160926143736) do
 
   add_index "attachinary_files", ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
 
+  create_table "letters", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "unsub_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "letters", ["unsub_id"], name: "index_letters_on_unsub_id", using: :btree
+
   create_table "services", force: :cascade do |t|
     t.string   "name"
     t.string   "company"
@@ -75,6 +84,7 @@ ActiveRecord::Schema.define(version: 20160926143736) do
     t.string   "form_specs"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.json     "text_base"
   end
 
   create_table "unsubs", force: :cascade do |t|
@@ -87,6 +97,7 @@ ActiveRecord::Schema.define(version: 20160926143736) do
     t.string   "sku"
     t.string   "state"
     t.json     "payment"
+    t.json     "details"
   end
 
   add_index "unsubs", ["service_id"], name: "index_unsubs_on_service_id", using: :btree
@@ -116,6 +127,7 @@ ActiveRecord::Schema.define(version: 20160926143736) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "letters", "unsubs"
   add_foreign_key "unsubs", "services"
   add_foreign_key "unsubs", "users", on_delete: :cascade
 end

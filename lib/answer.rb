@@ -3,15 +3,15 @@ module Answer
   def parse_ugc(array)
     hash = {}
     array.each do |q|
-      case q['field']['id']
-      when "25425783"
-         hash[:sub_num] = q['text']
-      when "25425854"
-        hash[:reason] = ugc_motivation(q['choice']['label'])
-      when "25431222"
-        hash[:reason] = ugc_motivation(q['choice']['label'])
-      end
       # refaire ces conditions... ça ne fonctionne pas correctement.
+      if q['field']['id'] == "25425783"
+        hash[:sub_num] = q['text']
+      elsif q['field']['id'] == "25431222"
+        hash[:reason] = ugc_motivation(q['choice']['label'])
+      elsif q['field']['id'] == "25425854"
+        hash[:reason] = ugc_motivation(q['choice']['label']) if hash[:reason].nil?
+      end
+      p q if q['type'] == 'choice'
     end
     return hash
   end
